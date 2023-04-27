@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  server:
+    build: ./server
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "65432:65432"
+  client:
+    build: ./client
+    volumes:
+      - ./data:/app/data
+    environment:
+      - SERVER_HOST=server
+      - SERVER_PORT=65432
+
